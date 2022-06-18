@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+
+files:
+   - source: /index.html
+     destination: /var/www/html
+
+hooks:
+  ApplicationStop:
+     - location: aws-scripts1/app-stop.sh
+       timeout: 300
+
+  BeforeInstall:
+     - location: aws-scripts1/before-install.sh
+       timeout: 300
+ 
+  Applicationstart:
+     - location: aws-scripts1/app-start.sh
+       timeout: 300
